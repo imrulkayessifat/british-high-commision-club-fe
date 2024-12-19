@@ -41,7 +41,7 @@ const UpdateMemberSheet = () => {
         Priority: memberQuery.data.Priority,
         Rfid: memberQuery.data.Rfid,
         IsCheckIn: memberQuery.data.IsCheckIn,
-        MaxGuestAllow: memberQuery.data.MaxGuestAllow || ""
+        MaxGuestAllow: memberQuery.data.MaxGuestAllow || 0
     } : {
         MemberID: "",
         FullName: '',

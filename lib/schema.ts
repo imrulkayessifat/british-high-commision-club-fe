@@ -24,6 +24,13 @@ export const MemberSchema = z.object({
     MaxGuestAllow: z.number().int().min(0).optional()
 });
 
+export const GuestSchema = z.object({
+    MemberVisitID: z.number(),
+    FullName: z.string().min(1, { message: "Full Name is required" }),
+    PhoneNo: z.string().regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number" }),
+    Rfid: z.string().min(1, { message: "RFID is required" }),
+})
+
 export const ManualCheckInSchema = z.object({
     FullName: z.string().optional(),
     PhoneNo: z.string().optional(),

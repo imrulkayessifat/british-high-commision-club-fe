@@ -29,7 +29,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         <div className='w-full h-full flex flex-col'>
             <Navbar />
             <div className='flex w-full h-full'>
-                <div className='flex flex-col gap-11 items-center px-5 pt-3'>
+                <div className='flex flex-col w-24 gap-11 items-center px-5 pt-3'>
                     {links.map((link, index) => (
                         
                         <SideBar icon={link.icon} key={index} href={link.href} />

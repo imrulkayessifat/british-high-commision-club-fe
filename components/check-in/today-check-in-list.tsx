@@ -19,7 +19,7 @@ const TodayCheckInList = () => {
         )
     }
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative overflow-x-auto shadow sm:rounded-lg">
             <table className="table-auto w-full min-w-max text-sm text-left rtl:text-right text-gray-500">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>

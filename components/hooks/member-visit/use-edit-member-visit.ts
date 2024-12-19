@@ -8,7 +8,6 @@ interface UseEditMemberVisitProps {
 
 export const useEditMemberVisit = ({ id }: UseEditMemberVisitProps) => {
     const queryClient = useQueryClient();
-    console.log("member visit id : ", id)
     const mutation = useMutation({
         mutationFn: async (data: MemberVisit) => {
             const req = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/member-visit/${id}`, {

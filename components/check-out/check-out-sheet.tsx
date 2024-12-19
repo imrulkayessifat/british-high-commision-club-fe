@@ -19,6 +19,7 @@ import { checkOutSheet } from '@/components/hooks/checkout-sheet'
 import { useGetSingleMemberVisit } from '@/components/hooks/member-visit/use-get-single-member-visit'
 import { useEditMemberVisit } from '@/components/hooks/member-visit/use-edit-member-visit'
 import { MemberVisit } from '@/lib/types'
+import { cn } from '@/lib/utils'
 
 const CheckOutSheet = () => {
     const { isOpen, onClose, id } = checkOutSheet()
@@ -32,6 +33,7 @@ const CheckOutSheet = () => {
             </div>
         )
     }
+    console.log("id", id)
     const editMemberVisit = async (data: MemberVisit) => {
         const resData = await mutation.mutateAsync(data)
 
@@ -71,7 +73,7 @@ const CheckOutSheet = () => {
                 </div>
                 {
                     memberVisitQuery.data && (
-                        <div className='flex min-w-[400px] justify-between rounded-md p-2'>
+                        <div className='flex min-w-[400px] justify-between rounded-md py-2 px-5'>
                             <div className='flex flex-col gap-3'>
                                 <div className='flex gap-3'>
                                     <Avatar className='w-24 h-24 cursor-pointer'>
@@ -92,20 +94,25 @@ const CheckOutSheet = () => {
                                     <p className='text-sm leading-5 text-[#323842FF]'>Phone Number: {memberVisitQuery.data.Member.PhoneNo}</p>
                                     <p className='text-sm leading-5 text-[#323842FF]'>Email: {memberVisitQuery.data.Member.Email}</p>
                                 </div>
-                                <button onClick={() => {
+                                <button disabled={memberVisitQuery.data.GuestCount > 0} onClick={() => {
                                     onSubmit({
                                         MemberInfoID: memberVisitQuery.data.Member.id
                                     });
                                 }
                                 }
-                                    className='bg-[#DE3B40FF] rounded-[6px] px-2 py-2 h-10 w-24'>
+                                    className={cn('bg-[#DE3B40FF] rounded-[6px] px-2 py-2 h-10 w-24',memberVisitQuery.data.GuestCount > 0 && 'opacity-20 cursor-not-allowed')}>
                                     Check-out
                                 </button>
                             </div>
                         </div>
                     )
                 }
-                <CheckOutForm />
+                {
+                    id && (
+
+                        <CheckOutForm GuestCount={memberVisitQuery.data.GuestCount} MaxGuestAllow={memberVisitQuery.data.Member.MaxGuestAllow} id={id} />
+                    )
+                }
             </SheetContent>
         </Sheet>
     )

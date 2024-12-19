@@ -8,7 +8,7 @@ import {
 
 const MemberCheckInForm = () => {
     return (
-        <div className='flex flex-col justify-center items-center  gap-3'>
+        <div className='flex flex-col  gap-3'>
             <div className="relative inline-flex justify-center w-[250px] items-center h-9 rounded-lg bg-[#F3F4F6FF] overflow-hidden">
                 <div className="grid place-items-center h-full w-12 text-[#104263FF]">
                     <FaUser />

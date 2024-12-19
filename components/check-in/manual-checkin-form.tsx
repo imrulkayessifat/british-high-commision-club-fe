@@ -23,7 +23,7 @@ import { Member, MemberVisit } from '@/lib/types';
 import { useSearchMemberList } from '@/components/hooks/member/use-search-member-list';
 import { cn } from '@/lib/utils';
 const ManualCheckInForm = () => {
-    const [members, setMembers] = useState([]);
+    const [members, setMembers] = useState<Member[]>([]);
     const { onClose } = manualCheckInSheet()
     const [isPending, startTransition] = useTransition();
     const mutation = useSearchMemberList()
@@ -89,8 +89,12 @@ const ManualCheckInForm = () => {
             })
         });
     }
+    const handleDecline = (memberId: number) => {
+        // Remove the specific member from visible members
+        setMembers(prev => prev.filter(member => member.id !== memberId));
+    }
     return (
-        <div className='flex flex-col justify-center items-center  gap-3'>
+        <div className='flex flex-col  gap-3'>
             <Form {...form}>
                 <form onKeyDown={(e) => {
                     if (e.key === 'Enter') {
@@ -207,7 +211,7 @@ const ManualCheckInForm = () => {
                             }} className={cn('px-3 py-2 bg-[#1DD75BFF] rounded-[6px] text-sm',member.IsCheckIn && 'opacity-25 cursor-not-allowed')}>
                                 Check-in
                             </button>
-                            <button className='px-3 py-2 bg-[#DE3B40FF] rounded-[6px] text-sm text-white'>
+                            <button onClick={() => handleDecline(member.id!)} className='px-3 py-2 bg-[#DE3B40FF] rounded-[6px] text-sm text-white'>
                                 Decline
                             </button>
                         </div>

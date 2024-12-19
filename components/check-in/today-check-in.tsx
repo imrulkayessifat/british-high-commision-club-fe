@@ -39,7 +39,7 @@ const TodayCheckIn = () => {
                     </button>
                 </div>
             </div>
-            <p>Today&apos;s Total Check-in count : <span className='text-[#104263FF]'>30</span></p>
+            <p className='font-inter leading-[26px] text-[16px] font-normal text-[#323842ff]'>Today&apos;s Total Check-in count : <span className='text-[#104263FF]'>30</span></p>
             <TodayCheckInList />
         </div>
     )

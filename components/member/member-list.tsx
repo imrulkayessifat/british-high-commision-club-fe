@@ -18,76 +18,70 @@ const MemberList = () => {
     }
 
     return (
-        <div className='flex w-full justify-center items-center min-h-[350px]'>
-            <div className="w-full px-5">
-                <div className='rounded-md border'>
-                    <div className='relative w-full overflow-auto'>
-                        <table className="w-full  caption-bottom text-sm">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                        ID
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        All Members
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Email
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Phone
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Gender
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Priority
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Status
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Created Date
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    data.map((member: Member, key: number) => (
-                                        <tr key={key} className="odd:bg-white  even:bg-gray-50  border-b ">
-                                            <th onClick={() => onOpen(member.id!)} scope="row" className="px-6 cursor-pointer py-4 font-medium text-[#104263FF] underline whitespace-nowrap ">
-                                                {member.MemberID}
-                                            </th>
-                                            <td className="px-6 py-4">
-                                                {member.FullName}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {member.Email}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {member.PhoneNo}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {member.Gender}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {member.Priority}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {member.Status}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {member.CreatedAt}
-                                            </td>
-                                        </tr>
-                                    ))
-                                }
+        <div className='relative overflow-x-auto shadow sm:rounded-lg mx-5'>
+            <table className="table-auto w-full min-w-max text-sm text-left rtl:text-right text-gray-500">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
+                    <tr>
+                        <th scope="col" className="px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            All Members
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Email
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Phone
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Gender
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Priority
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Status
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Created Date
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        data.map((member: Member, key: number) => (
+                            <tr key={key} className="odd:bg-white  even:bg-gray-50  border-b ">
+                                <th onClick={() => onOpen(member.id!)} scope="row" className="px-6 cursor-pointer py-4 font-medium text-[#104263FF] underline whitespace-nowrap ">
+                                    {member.MemberID}
+                                </th>
+                                <td className="px-6 py-4">
+                                    {member.FullName}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {member.Email}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {member.PhoneNo}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {member.Gender}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {member.Priority}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {member.Status}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {member.CreatedAt}
+                                </td>
+                            </tr>
+                        ))
+                    }
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
     )
 }

@@ -17,6 +17,16 @@ export interface Member {
     CreatedAt?: string;
 }
 
+export interface MemberGuest {
+    id?: number;
+    MemberVisitID?: number;
+    FullName?: string;
+    PhoneNo?: string;
+    Rfid?: string;
+    InTime?: string | null;
+    OutTime?: string | null;
+}
+
 export interface MemberVisit {
     id?: number;
     MemberInfoID: number;

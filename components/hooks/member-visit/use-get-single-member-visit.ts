@@ -23,7 +23,8 @@ export const useGetSingleMemberVisit = ({ id }: UseGetSingleMemberVisitProps) =>
             const data = await response.json();
 
             return data;
-        }
+        },
+        gcTime:0
     })
 
     return query;

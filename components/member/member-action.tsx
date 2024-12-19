@@ -38,8 +38,8 @@ const MemberAction = () => {
     }
     return (
         <div className='flex w-full flex-wrap gap-3 justify-between px-5'>
-            <div className='flex w-1/2 justify-start flex-col md:flex-row gap-3'>
-                <div className="relative flex items-center w-full  min-w-[250px] h-12 rounded-lg bg-[#F3F4F6FF] overflow-hidden">
+            <div className='flex w-1/2 justify-start flex-wrap flex-col md:flex-row gap-3'>
+                <div className="relative flex items-center w-full  max-w-[200px] min-w-[200px] h-12 rounded-lg bg-[#F3F4F6FF] overflow-hidden">
                     <div className="grid place-items-center h-full w-12 text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -54,7 +54,7 @@ const MemberAction = () => {
                     />
                 </div>
                 <Select>
-                    <SelectTrigger className="w-full  min-w-[250px] h-12 rounded-lg bg-[#F3F4F6FF] focus:ring-0 focus:ring-offset-0">
+                    <SelectTrigger className="w-full  max-w-[200px] min-w-[200px] h-12 rounded-lg bg-[#F3F4F6FF] focus:ring-0 focus:ring-offset-0">
                         <SelectValue className='text-gray-300' placeholder="Priority" />
                     </SelectTrigger>
                     <SelectContent>
@@ -66,9 +66,21 @@ const MemberAction = () => {
                         </SelectGroup>
                     </SelectContent>
                 </Select>
+                <Select>
+                    <SelectTrigger className="w-full  max-w-[200px] min-w-[200px] h-12 rounded-lg bg-[#F3F4F6FF] focus:ring-0 focus:ring-offset-0">
+                        <SelectValue className='text-gray-300' placeholder="Gender" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup className='text-gray-300'>
+                            <SelectLabel>Gender</SelectLabel>
+                            <SelectItem value="male">Male</SelectItem>
+                            <SelectItem value="female">Female</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
             </div>
             <DropdownMenu>
-                <div className='flex gap-3 h-12 min-w-[250px] items-center bg-white border rounded-md px-5 border-[#104263FF] outline-0'>
+                <div className='flex gap-3 h-12 min-w-[200px] items-center bg-white border rounded-md px-5 border-[#104263FF] outline-0'>
                     <DropdownMenuTrigger asChild>
                         <IoFilter className='cursor-pointer' />
                     </DropdownMenuTrigger>
