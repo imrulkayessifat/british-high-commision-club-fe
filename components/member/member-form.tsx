@@ -58,7 +58,7 @@ const MemberForm = ({
             Priority: 'LOW',
             Rfid: '',
             IsCheckIn: false,
-            MaxGuestAllow: 0
+            MaxGuestAllow: undefined
         },
     })
     return (
@@ -216,14 +216,21 @@ const MemberForm = ({
                     <FormField
                         control={form.control}
                         name="MaxGuestAllow"
-                        render={({ field: { onChange, ...field } }) => (
+                        render={({ field }) => (
                             <div className='w-full xl:w-1/2'>
                                 <p className='text-[14px] leading-[22px] font-bold font-inter'>Allowed Guest Count</p>
-                                <input onChange={(e) => {
-                                    const value = e.target.value === '' ? undefined : Number(e.target.value);
-                                    onChange(value);
-                                }}
-                                    disabled={disabled} {...field} min={0} type='number' className='bg-[F2F8FDFF] w-full rounded-[6px] h-9 px-5 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' />
+                                <input
+                                    value={field.value ?? ''}
+                                    onChange={(e) => {
+                                        const inputValue = e.target.value;
+                                        if (inputValue === '') {
+                                            field.onChange(undefined);
+                                        } else {
+                                            // Allow single "0", but remove leading zeros for other numbers
+                                            field.onChange(Number(e.target.value));
+                                        }
+                                    }}
+                                    disabled={disabled} min={0} type='number' className='bg-[F2F8FDFF] w-full rounded-[6px] h-9 px-5 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none' />
                                 <FormMessage />
                             </div>
                         )}

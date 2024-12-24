@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 
 import {
     Dialog,
+    DialogOverlay,
     DialogContent,
     DialogFooter,
     DialogHeader,
@@ -85,7 +86,8 @@ const GuestForm: React.FC<GuestFormProps> = ({
                     <p>Add</p>
                 </button>
             </DialogTrigger>
-            <DialogContent className='bg-[#F2F8FDFF]'>
+            <DialogOverlay className='bg-black/20' />
+            <DialogContent className='bg-[#F2F8FDFF] left-[90%] top-[40%] translate-x-[-90%] translate-y-[-40%]'>
                 <DialogHeader>
                     <DialogTitle>
                         Add Guest
