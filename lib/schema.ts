@@ -36,3 +36,21 @@ export const ManualCheckInSchema = z.object({
     PhoneNo: z.string().optional(),
     Email: z.string().optional(),
 })
+
+const GuestInEventSchema = z.object({
+    FullName: z.string().min(1, { message: "Full Name is required" }),
+    PhoneNo: z.string().regex(/^\+?[1-9]\d{1,14}$/, { message: "Invalid phone number" }),
+})
+
+export const EventSchema = z.object({
+    Title: z.string().min(1, { message: "Title is required" }),
+    MemberInfoID: z.string().min(1, { message: "MemberInfoID is required" }),
+    Date: z.string().min(1, { message: "Date is required" }),
+    TotalGuestCount: z.number().int().min(0),
+    PresentGuestCount: z.number().int().min(0).default(0),
+    StartTime: z.string().min(1, { message: "Start Time is required" }),
+    EndTime: z.string().min(1, { message: "End Time is required" }),
+    EventDuration: z.number(),
+    Summary: z.string().min(1, { message: "Summary is required" }),
+    Guests: z.array(GuestInEventSchema)
+})

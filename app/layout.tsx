@@ -4,6 +4,7 @@ import { Inter, Lexend } from 'next/font/google';
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
 import SheetProvider from "@/providers/sheet-provider";
+import DialogProvider from "@/providers/dialog-provider";
 import { Toaster } from "@/components/ui/sonner"
 
 
@@ -37,6 +38,7 @@ export default function RootLayout({
       >
         <QueryProvider>
           <SheetProvider />
+          <DialogProvider />
           {children}
         </QueryProvider>
         <Toaster />
